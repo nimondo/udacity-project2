@@ -1,0 +1,40 @@
+       {% extends "index.html" %}
+        {% block content %}  
+         <h2 class="section-heading text-uppercase">Catalog</h2>
+          <div class="row">
+              <div class="offset-md-2 col-md-10" id="box-container">
+                  <div class="row">
+                    <div class="col-md-4">
+                            <h4 style="color:red;"><strong>Catalog</strong></h4>
+                        {% if catalog %}
+                        <ul class="list-group">
+                          <li class="list-group-item list-group-item-info"> <strong> {{ catalog.name }}&nbsp; {% if catalog.user_id == session['id']  %}
+                            <a href="{{url_for('editCatalog',catalog_name=catalog.name)}}" class="btn btn-warning" ><i class="fas fa-pencil"></i>Edit</a>
+                             &nbsp;<a href="{{url_for('deleteCatalog',catalog_name=catalog.name)}}" class="btn btn-danger" >Delete</a>
+                             {% endif %}</strong> </li>
+                        </ul>
+                        <a href="{{url_for('newCatalog')}}" class="btn btn-danger">New Category </a>&nbsp;
+                         <a href="{{url_for('addItemsCatalog',catalog_name=catalog.name)}}" class="btn btn-warning"> Add Items</a>
+                        {% else %}
+                      <p>No catalog</p>
+                      {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                            <h4 style="color:red;"><strong>Item</strong></h4>
+                        
+                        {% if item %}
+                        <h3>{{catalog.name}}</h3>
+                        <p>{{item.description}}</p><br>
+                        {% if item.user_id == session['id']  %}
+                            <a href="{{url_for('editItemCatalog',catalog_name=catalog.name,item=item.name)}}" class="btn btn-warning" ><i class="fas fa-pencil"></i>Edit</a>
+                             &nbsp;<a href="{{url_for('deleteItem',catalog_name=catalog.name,item=item.name)}}" class="btn btn-danger" >Delete</a>
+                             {% endif %}</strong>
+                      {% else %}
+                      <p>No item</p>
+                      {% endif %}
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+            {% endblock %}

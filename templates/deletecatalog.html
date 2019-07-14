@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block content %}
+<h2> Are you sure you want to delete {{catalog.name}}? </h2>
+
+<form style="float:left;margin-right:10px;" action="" method = 'post'>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+<button  class="btn btn-danger" id="submit" type="submit">
+<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>
+</form>
+
+<a href = "{{url_for('showCatalog')}}"">
+	<button class="btn btn-warning">
+	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+</a>
+
+{% endblock %}

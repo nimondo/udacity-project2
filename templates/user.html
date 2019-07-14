@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %} 
+<div id="box-container">
+<h1>Profil</h1>
+
+<a href="{{url_for('newCatalog')}}" > <h3> Create a New Category</h3> </a>
+
+
+<a href = "#"> <p>Name:{{user.name}}</p></a><br>
+<p> Email:{{user.email}}</p>
+
+</div>
+
+{% endblock %}
